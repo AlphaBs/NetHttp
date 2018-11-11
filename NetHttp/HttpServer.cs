@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Net;
+using System.Threading;
 
 namespace NetHttp
 {
@@ -14,20 +15,27 @@ namespace NetHttp
 
         TcpListener server;
         HttpClientManager clients;
+        Thread AcceptThread;
 
         public void Start()
         {
             server.Start();
-            while(true)
+            AcceptThread = new Thread(new ThreadStart(delegate
             {
-                var client = server.AcceptTcpClient();
-                clients.NewConnection(client);
-            }
+                while (true)
+                {
+                    var client = server.AcceptTcpClient();
+                    clients.NewConnection(client);
+                }
+            }));
+            AcceptThread.Start();
         }
 
         public void Stop()
         {
             server.Stop();
+            AcceptThread.Abort();
+            AcceptThread = null;
             clients.DisconnectAll();
         }
     }
