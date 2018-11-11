@@ -45,7 +45,10 @@
   <ItemGroup>
     <Compile Include="HttpClientManager.cs" />
     <Compile Include="HttpProtocol.cs" />
+    <Compile Include="HttpRequest.cs" />
+    <Compile Include="HttpResponse.cs" />
     <Compile Include="HttpServer.cs" />
+    <Compile Include="HttpStream.cs" />
     <Compile Include="Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
