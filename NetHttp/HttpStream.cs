@@ -61,5 +61,10 @@ namespace NetHttp
             stream.Read(data, 0, count);
             return data;
         }
+
+        public void WriteLine(string msg)
+        {
+            
+        }
     }
 }

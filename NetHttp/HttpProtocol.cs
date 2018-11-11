@@ -26,6 +26,8 @@ namespace NetHttp
             }
             if (request.Body != null)
                 Console.WriteLine(System.Text.Encoding.ASCII.GetString(request.Body));
+
+
         }
     }
 }
